@@ -3,7 +3,7 @@
 # read shakespeare's complete works,
 #  count the instances of each word.
 
-input_text = 'shakespeare.txt'
+input_text = './task_002_wordcount-python/shakespeare.txt'
 words = dict()
 with open(input_text, 'r') as text:
 	import re
