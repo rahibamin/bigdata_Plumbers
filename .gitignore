@@ -17,3 +17,4 @@ task_003_hadoop-wordcount/org/myorg/hadoop-core-1.2.1.jar
 task_003_hadoop-wordcount/org/myorg/WordCount.java
 task_003_hadoop-wordcount/target/my-app-1.0-SNAPSHOT.jar
 task_003_hadoop-wordcount/target/maven-archiver/pom.properties
+task_004_sql-queries/.jaime-answers.md.swp
