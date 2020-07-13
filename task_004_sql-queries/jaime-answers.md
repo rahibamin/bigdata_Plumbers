@@ -55,10 +55,40 @@ Write a query in SQL to display the first and last name, department, and city fo
 ### Solution
 
 ```
-
+mysql> select Employee.first_name, Employee.last_name, HR.department_id, Employee.city from Employee left join HR on id;
++------------+-----------+---------------+----------------------+
+| first_name | last_name | department_id | city                 |
++------------+-----------+---------------+----------------------+
+| such       | as        | root          | district of columbia |
+| skippy     | von lou   | root          | atlanta              |
+| such       | as        | drone         | district of columbia |
+| skippy     | von lou   | drone         | atlanta              |
+| such       | as        | drone         | district of columbia |
+| skippy     | von lou   | drone         | atlanta              |
+| bill       | charge    | NULL          | new york             |
++------------+-----------+---------------+----------------------+
+7 rows in set (0.00 sec)
 ```
 
+The query is `select Employee.first_name, Employee.last_name, HR.department_id, Employee.city from Employee left join HR on id;`
+
 ## For employess whose city is Atlanta.
+
+### Solution
+
+```
+mysql> select Employee.first_name, Employee.last_name, HR.department_id, Employee.city from Employee left join HR on id where Employee.city like 'atlanta';
++------------+-----------+---------------+---------+
+| first_name | last_name | department_id | city    |
++------------+-----------+---------------+---------+
+| skippy     | von lou   | root          | atlanta |
+| skippy     | von lou   | drone         | atlanta |
+| skippy     | von lou   | drone         | atlanta |
++------------+-----------+---------------+---------+
+3 rows in set (0.04 sec)
+```
+
+The query is `select Employee.first_name, Employee.last_name, HR.department_id, Employee.city from Employee left join HR on id where Employee.city like 'atlanta';`.
 
 ## For employees whose city is New York.
 
