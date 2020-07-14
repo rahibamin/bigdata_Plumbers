@@ -18,3 +18,9 @@ task_003_hadoop-wordcount/org/myorg/WordCount.java
 task_003_hadoop-wordcount/target/my-app-1.0-SNAPSHOT.jar
 task_003_hadoop-wordcount/target/maven-archiver/pom.properties
 task_004_sql-queries/.jaime-answers.md.swp
+task_003_hadoop-wordcount/my-app/.classpath
+task_003_hadoop-wordcount/my-app/.project
+task_003_hadoop-wordcount/my-app/.settings/org.eclipse.core.resources.prefs
+task_003_hadoop-wordcount/my-app/.settings/org.eclipse.jdt.apt.core.prefs
+task_003_hadoop-wordcount/my-app/.settings/org.eclipse.jdt.core.prefs
+task_003_hadoop-wordcount/my-app/.settings/org.eclipse.m2e.core.prefs
