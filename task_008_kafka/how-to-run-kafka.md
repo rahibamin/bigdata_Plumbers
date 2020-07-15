@@ -431,3 +431,60 @@
 
 > agents-42@atlanta-hq:~/opt/gits/bigdata_Plumbers/task_008_kafka$ ssh hadoop@namesync -t 'source .bashrc; source .bash_profile; kafka-topics.sh --create --bootstrap-server localhost:9099 --replication-factor 2 partitions 1 --topic kafkaTest'
 
+# Work with the Zookeeper to create a topic.
+
+> agents-42@atlanta-hq:~/opt/gits/bigdata_Plumbers/task_008_kafka$ ssh hadoop@namesync -t 'source .bashrc; source .bash_profile; kafka-topics.sh --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic kafkaTest' --create
+> Created topic "kafkaTest".
+
+
+# Describe your topic from Zookeeper.
+
+>agents-42@atlanta-hq:~/opt/gits/bigdata_Plumbers/task_008_kafka$ ssh hadoop@namesync -t 'source .bashrc; source .bash_profile; kafka-topics.sh --describe --zookeeper localhost:2181 --topic kafkaTest'
+>Topic:kafkaTest PartitionCount:1        ReplicationFactor:1     Configs:
+>        Topic: kafkaTest        Partition: 0    Leader: 1       Replicas: 1     Isr: 1
+
+# Discussing Zookeeper.
+
+Start Zookeeper first. KAFKA without Zookeeper goes into zombie mode.
+
+## closing KAFTA/Zookeeper.
+
+Close in a push/pop stack. Zookeeper runtime contains KAFKA.
+
+- Start Zookeeper
+- Start KAFKA
+- (proceed)
+- Stop KAFKA
+- STOP Zookeeper
+
+
+# Input data with kafka console producer
+
+## producer 
+
+> agents-42@atlanta-hq:~/opt/gits/bigdata_Plumbers/task_008_kafka$ ssh hadoop@namesync -t 'source .profile; source .bash_profile; kafka-console-producer.sh --broker-list localhost:9099 --topic kafkaTest'
+
+## consumer
+
+> agents-42@atlanta-hq:~$ ssh hadoop@namesync -t 'source .profile; source .bash_profile; kafka-console-consumer.sh --bootstrap-server localhost:9099 --topic kafkaTest'
+
+
+## feeding through
+
+The producer accepts information where the consumer logs the messages received.
+
+## restart the consumer reports --from-beginning
+
+> agents-42@atlanta-hq:~$ ssh hadoop@namesync -t 'source .profile; source .bash_profile; kafka-console-consumer.sh --bootstrap-server localhost:9099 --topic kafkaTest' --from-beginning
+> ?
+> \
+> \?
+> hello
+> hi
+> last message
+> last message
+> lathis is my second time
+> this is my second time
+> this is my second time
+
+
