@@ -32,17 +32,18 @@ public class WordCount {
   /**
    * A reducer class that just emits the sum of the input values.
    */
-  public static class Reduce extends MapReduceBase
-    implements Reducer<Text, IntWritable, Text, IntWritable> {
+  public static class Reduce {
     
-    public void reduce(Text key, Iterator<IntWritable> values,
-                       OutputCollector<Text, IntWritable> output, 
-                       Reporter reporter) throws IOException {
-      int sum = 0;
+    public HashMap<String, BigInteger> reduce(String key, Iterator<BigInteger> values) {
+      BigInteger sum = BigInteger.ZERO;
       while (values.hasNext()) {
         sum += values.next().get();
       }
-      output.collect(key, new IntWritable(sum));
+
+	
+	HashMap<String, BigInteger> output = new HashMap<String, BigInteger>();
+	output.put(key,sum);
+	return output;
     }
   }
   
