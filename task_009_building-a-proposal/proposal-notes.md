@@ -9,4 +9,11 @@
 
 - [Urban Dictionary API](https://rapidapi.com/tekinbelek/api/current-weather-forecast/endpoints)
 
+# The Topic Refresher
+
+Input a list of words, pair word and definition. Provide a website
+that produces indexable card graphics that link to words with
+definitions LIKE one another.
+
+- [Globe Icon](https://images.app.goo.gl/Qx9Fd54CDt8oP6mG7)
 
