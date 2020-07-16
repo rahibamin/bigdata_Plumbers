@@ -26,3 +26,6 @@ task_003_hadoop-wordcount/my-app/.settings/org.eclipse.jdt.core.prefs
 task_003_hadoop-wordcount/my-app/.settings/org.eclipse.m2e.core.prefs
 bd-plumber.code-workspace
 task_009_building-a-proposal/*~
+task_009_building-a-proposal/logo-dictionary.jpeg
+task_009_building-a-proposal/logo-dictionary.png
+task_009_building-a-proposal/logo-weather.png
