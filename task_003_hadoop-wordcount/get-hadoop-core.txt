@@ -1,0 +1,10 @@
+<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core -->
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-core</artifactId>
+    <version>1.2.1</version>
+</dependency>
+
+
+# setup single cluster
+`https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html`
