@@ -47,12 +47,6 @@ public class WordCount {
     }
   }
   
-  static int printUsage() {
-    System.out.println("wordcount [-m <maps>] [-r <reduces>] <input> <output>");
-    ToolRunner.printGenericCommandUsage(System.out);
-    return -1;
-  }
-  
   /**
    * The main driver for word count map/reduce program.
    * Invoke this method to submit the map/reduce job.
@@ -60,54 +54,15 @@ public class WordCount {
    *                     job tracker.
    */
   public int run(String[] args) throws Exception {
-    JobConf conf = new JobConf(getConf(), WordCount.class);
-    conf.setJobName("wordcount");
- 
-    // the keys are words (strings)
-    conf.setOutputKeyClass(Text.class);
-    // the values are counts (ints)
-    conf.setOutputValueClass(IntWritable.class);
-    
-    conf.setMapperClass(MapClass.class);        
-    conf.setCombinerClass(Reduce.class);
-    conf.setReducerClass(Reduce.class);
-    
-    List<String> other_args = new ArrayList<String>();
-    for(int i=0; i < args.length; ++i) {
-      try {
-        if ("-m".equals(args[i])) {
-          conf.setNumMapTasks(Integer.parseInt(args[++i]));
-        } else if ("-r".equals(args[i])) {
-          conf.setNumReduceTasks(Integer.parseInt(args[++i]));
-        } else {
-          other_args.add(args[i]);
-        }
-      } catch (NumberFormatException except) {
-        System.out.println("ERROR: Integer expected instead of " + args[i]);
-        return printUsage();
-      } catch (ArrayIndexOutOfBoundsException except) {
-        System.out.println("ERROR: Required parameter missing from " +
-                           args[i-1]);
-        return printUsage();
-      }
-    }
-    // Make sure there are exactly 2 parameters left.
-    if (other_args.size() != 2) {
-      System.out.println("ERROR: Wrong number of parameters: " +
-                         other_args.size() + " instead of 2.");
-      return printUsage();
-    }
-    FileInputFormat.setInputPaths(conf, other_args.get(0));
-    FileOutputFormat.setOutputPath(conf, new Path(other_args.get(1)));
-        
-    JobClient.runJob(conf);
+    private final static java.io.FileInputStream one = new java.io.FileInputStream("./input.txt");
+
     return 0;
   }
   
   
   public static void main(String[] args) throws Exception {
-    private final static java.io.FileInputStream one = new java.io.FileInputStream("./input.txt");
-    int res = ToolRunner.run(new Configuration(), new WordCount(), args);
+	WordCount parser = new WordCount();
+    int res = parser.run(args);
     System.exit(res);
   }
 
