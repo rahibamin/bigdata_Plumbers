@@ -22,7 +22,8 @@ public class WordCount {
   public static class MapClass {
     public java.util.HashMap<String,BigInteger> map(String value) {
       java.util.HashMap<String,BigInteger> output = new java.util.HashMap<String,BigInteger>();
-	for ( String word : value.split("\\W+")) {
+	for ( String word : value.split("[\\W\\d]+")) {
+        // TODO make word keys case-insensitive.
 	output.putIfAbsent(word,java.math.BigInteger.ZERO);
         output.put(word,java.math.BigInteger.ONE);
       }
