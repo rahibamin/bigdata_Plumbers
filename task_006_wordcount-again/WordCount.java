@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.io.FileInputStream;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 
@@ -17,8 +17,8 @@ public class WordCount {
    * (<b>word</b>, <b>1</b>).
    */
   public static class MapClass {
-    public java.util.HashSet<String,BigInteger> map(String key, java.io.InputStream value) {
-      java.util.HashSet<String,BigInteger> output = new java.util.HashSet<String,BigInteger>();
+    public java.util.HashMap<String,BigInteger> map(java.io.InputStream value) {
+      java.util.HashMap<String,BigInteger> output = new java.util.HashMap<String,BigInteger>();
       String line = value.toString();
       StringTokenizer itr = new StringTokenizer(line);
       while (itr.hasMoreTokens()) {
@@ -26,6 +26,7 @@ public class WordCount {
 	output.putIfAbsent(word,java.math.BigInteger.ZERO);
         output.put(word,java.math.BigInteger.ONE);
       }
+	return output;
     }
   }
   
@@ -36,12 +37,12 @@ public class WordCount {
     
     public HashMap<String, BigInteger> reduce(String key, Iterator<BigInteger> values) {
       BigInteger sum = BigInteger.ZERO;
-      while (values.hasNext()) {
+      // while (values.hasNext()) {
         sum += values.next().get();
       }
 
 	
-	HashMap<String, BigInteger> output = new HashMap<String, BigInteger>();
+	HashMap<String,BigInteger> output = new HashMap<String,BigInteger>();
 	output.put(key,sum);
 	return output;
     }
@@ -54,7 +55,11 @@ public class WordCount {
    *                     job tracker.
    */
   public int run(String[] args) throws Exception {
-    private final static java.io.FileInputStream one = new java.io.FileInputStream("./input.txt");
+	HashMap<String,BigInteger> parse = MapClass.map(new java.io.FileInputStream("./input.txt"));
+
+	for (String key : parse.keys()) {
+	  System.out.println(key);
+	}
 
     return 0;
   }
