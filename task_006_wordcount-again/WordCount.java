@@ -3,11 +3,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.StringTokenizer;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class WordCount {
   
@@ -17,12 +20,9 @@ public class WordCount {
    * (<b>word</b>, <b>1</b>).
    */
   public static class MapClass {
-    public java.util.HashMap<String,BigInteger> map(java.io.InputStream value) {
+    public java.util.HashMap<String,BigInteger> map(String value) {
       java.util.HashMap<String,BigInteger> output = new java.util.HashMap<String,BigInteger>();
-      String line = value.toString();
-      StringTokenizer itr = new StringTokenizer(line);
-      while (itr.hasMoreTokens()) {
-	String word = itr.nextToken();
+	for ( String word : value.split("\\W+")) {
 	output.putIfAbsent(word,java.math.BigInteger.ZERO);
         output.put(word,java.math.BigInteger.ONE);
       }
@@ -37,10 +37,9 @@ public class WordCount {
     
     public HashMap<String, BigInteger> reduce(String key, Iterator<BigInteger> values) {
       BigInteger sum = BigInteger.ZERO;
-      // while (values.hasNext()) {
-        sum += values.next().get();
+      while (values.hasNext()) {
+        sum = values.next().add(sum);
       }
-
 	
 	HashMap<String,BigInteger> output = new HashMap<String,BigInteger>();
 	output.put(key,sum);
@@ -55,10 +54,13 @@ public class WordCount {
    *                     job tracker.
    */
   public int run(String[] args) throws Exception {
-	HashMap<String,BigInteger> parse = MapClass.map(new java.io.FileInputStream("./input.txt"));
+	MapClass mapper = new MapClass();
+	HashMap<String,BigInteger> parse = mapper.map(new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("./input.txt"))));
 
-	for (String key : parse.keys()) {
-	  System.out.println(key);
+	for (String key : parse.keySet()) {
+		System.out.print(key);
+		System.out.print(" ");
+	  System.out.println(parse.get(key));
 	}
 
     return 0;
