@@ -19,8 +19,8 @@ from the Urban Dictionary API.
    1. [Table of contents]
    2. [Executive summary]
 2. [Introduction] to the Topic Indexer.
-   1.[General context]
-   2.[A word on terms, assumptions and choices]
+   1. [General context]
+   2. [A word on terms, assumptions and choices]
 3. [Definition]
 4. [Actors]
 5. [Use cases]
