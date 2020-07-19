@@ -36,3 +36,13 @@ task_009_building-a-proposal/Thu--16-Jul-2020-10_11_46--0400.history
 task_009_building-a-proposal/world.png
 task_006_wordcount-again/Thu--16-Jul-2020-10_02_19--0400.history
 task_006_wordcount-again/Thu--16-Jul-2020-16_49_06--0400.history
+task_007_flume/apache-flume-1.8.0-bin.tar.gz
+task_007_flume/apache-flume-1.8.0-src.tar.gz
+task_007_flume/apache-flume-1.8.0-bin.tar.gz.md5
+task_007_flume/apache-flume-1.8.0-src.tar.gz.md5
+task_007_flume/apache-flume-1.8.0-bin/
+task_007_flume/apache-flume-1.8.0-src/
+task_007_flume/README.md~
+*/*.history
+*/*~
+
