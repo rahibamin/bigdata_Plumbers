@@ -48,4 +48,4 @@ task_007_flume/README.md~
 
 task_007_flume/secret-keys.txt
 task_007_flume/etc-hadoop/Sun--19-Jul-2020-13_14_38--0400.history
-Sun--19-Jul-2020-14_25_33--0400.history
+*.history
